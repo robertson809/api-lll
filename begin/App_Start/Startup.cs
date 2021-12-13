@@ -28,7 +28,7 @@ namespace ExploreCalifornia
             //config.Formatters.XmlFormatter.UseXmlSerializer = true; // tells it to use the XML serializer instead of DataContractSerializer
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
-
+            config.MapHttpAttributeRoutes(); // look for attributes on action methods
             // this tells the API calls where to look for the methods. 
             // here they look in tour and get, so when we call http://localhost:52201/api/tour
             // we look for a class that has "tour" in its name within the Controllers files. 
@@ -39,15 +39,10 @@ namespace ExploreCalifornia
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 // don't have to match the id
-                defaults: new { id = RouteParameter.Optional },
-                constraints: new { id = @"\d+" } // regex here
+                defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultNameApi",
-                routeTemplate: "api/{controller}/{name}",
-                defaults: new { name = RouteParameter.Optional }
-            );
+          
 
             app.UseWebApi(config);
         }

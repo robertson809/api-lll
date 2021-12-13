@@ -34,6 +34,7 @@ namespace ExploreCalifornia.Controllers
             return query.ToList();
         }
 
+        [Route("api/tour/{id:int}")]
         public Tour GetById(int id)
         {
             var item = _context.Tours.Where(i => i.TourId == id).FirstOrDefault();
@@ -41,6 +42,7 @@ namespace ExploreCalifornia.Controllers
             return item;
         }
 
+        [Route("api/tour/{name}")]
         public Tour GetByName(string name)
         {
             var item = _context.Tours.Where(i => i.Name.Contains(name)).FirstOrDefault();
