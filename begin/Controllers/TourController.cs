@@ -18,23 +18,30 @@ using ExploreCalifornia.DTOs;
 
 namespace ExploreCalifornia.Controllers
 {
+    [RoutePrefix("api/tour")]
     public class TourController : ApiController
     {
         // this is opening a connection to the database in app_data
         private AppDataContext _context = new AppDataContext();
-        public List<Tour> GetAllTours([FromUri]bool freeOnly = false)
+        public List<TourDto> GetAllTours([FromUri]bool freeOnly = false)
         {
             // this is an IQueryable item, which is useful because of its deferred execution
             // it doesn't actually pull up the data until runtime, which is great because
             // you don't have to carry 1000s of results up if you end up filtering down to 1
             // in the end. 
-            var query = _context.Tours.AsQueryable();
+            var query = _context.Tours.Select(i => new TourDto {
+                Description = i.Description,
+                Name = i.Name,
+                Price = i.Price,
+                TourId = i.TourId
+            }
+            ).AsQueryable();
 
             if (freeOnly) query = query.Where(i => i.Price == 0.0m);
             return query.ToList();
         }
 
-        [Route("api/tour/{id:int}")]
+        [Route("{id:int}")] // this is a better way to do it than the routing table in config/startup
         public Tour GetById(int id)
         {
             var item = _context.Tours.Where(i => i.TourId == id).FirstOrDefault();
@@ -42,7 +49,7 @@ namespace ExploreCalifornia.Controllers
             return item;
         }
 
-        [Route("api/tour/{name}")]
+        [Route("{name}")]
         public Tour GetByName(string name)
         {
             var item = _context.Tours.Where(i => i.Name.Contains(name)).FirstOrDefault();
