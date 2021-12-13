@@ -33,4 +33,10 @@ namespace ExploreCalifornia.Controllers
             Pseudonyms = new List<string>();
         }
     }
+
+    public class Class2
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
 }
