@@ -167,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AuthorizeController.cs" />
     <Compile Include="Controllers\Class1.cs" />
     <Compile Include="DataAccess\Models\Reservation.cs" />
     <Compile Include="DTOs\AuthorizeRequestDto.cs" />

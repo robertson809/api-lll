@@ -25,6 +25,7 @@ namespace ExploreCalifornia
         
         private static void ConfigureWebApi(IAppBuilder app, HttpConfiguration config)
         {
+            //config.Formatters.XmlFormatter.UseXmlSerializer = true; // tells it to use the XML serializer instead of DataContractSerializer
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
 
@@ -38,7 +39,14 @@ namespace ExploreCalifornia
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 // don't have to match the id
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { id = RouteParameter.Optional },
+                constraints: new { id = @"\d+" } // regex here
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultNameApi",
+                routeTemplate: "api/{controller}/{name}",
+                defaults: new { name = RouteParameter.Optional }
             );
 
             app.UseWebApi(config);

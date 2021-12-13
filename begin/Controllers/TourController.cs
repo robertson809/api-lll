@@ -34,7 +34,22 @@ namespace ExploreCalifornia.Controllers
             return query.ToList();
         }
 
-        public IHttpActionResult GetOut2([FromUri] Class2 class2_input)
+        public Tour GetById(int id)
+        {
+            var item = _context.Tours.Where(i => i.TourId == id).FirstOrDefault();
+
+            return item;
+        }
+
+        public Tour GetByName(string name)
+        {
+            var item = _context.Tours.Where(i => i.Name.Contains(name)).FirstOrDefault();
+
+            return item;
+        }
+
+
+        public IHttpActionResult Out2([FromUri] Class2 class2_input)
         {
             string msg = $"Hi {class2_input.Name}, in 50 years you will be {class2_input.Age + 50}";
             return Ok(msg);
@@ -47,7 +62,7 @@ namespace ExploreCalifornia.Controllers
         }
 
 
-        public IHttpActionResult GetOut(string name, int age)
+        public IHttpActionResult Out(string name, int age)
         {
             string msg = $"Hi {name}, in 50 years you will be {age + 50}";
             return Ok(msg);
