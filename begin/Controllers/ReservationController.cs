@@ -21,7 +21,7 @@ namespace ExploreCalifornia.Controllers
         // GET: api/Reservation
         public IQueryable<Reservation> GetReservations()
         {
-            return db.Reservations;
+            return db.Reservations.Include(i =>i.Tour);
         }
 
         // GET: api/Reservation/5

@@ -1,3 +1,4 @@
+using System.Windows.Markup;
 using ExploreCalifornia.DataAccess.Models;
 
 namespace ExploreCalifornia.DataAccess
@@ -8,7 +9,7 @@ namespace ExploreCalifornia.DataAccess
     {
         public AppDataContext() : base("name=AppDataContext")
         {
-
+            this.Configuration.LazyLoadingEnabled = false; // don't load anything automatically
         }
 
         public virtual DbSet<AuthorizedApp> AuthorizedApps { get; set; }
