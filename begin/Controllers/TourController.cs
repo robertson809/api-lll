@@ -23,6 +23,13 @@ namespace ExploreCalifornia.Controllers
     {
         // this is opening a connection to the database in app_data
         private AppDataContext _context = new AppDataContext();
+
+
+        /// <summary>
+        /// Gets a list of all tours
+        /// </summary>
+        /// <param name="freeOnly"> Show free tours only?</param>
+        /// <returns>List of all matching tours</returns>
         public List<TourDto> GetAllTours([FromUri]bool freeOnly = false)
         {
             // this is an IQueryable item, which is useful because of its deferred execution

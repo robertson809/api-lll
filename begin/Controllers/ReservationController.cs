@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,9 +12,12 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using ExploreCalifornia.DataAccess;
 using ExploreCalifornia.DataAccess.Models;
+using ExploreCalifornia.Filters;
 
 namespace ExploreCalifornia.Controllers
 {
+    [Authorize] // secures access to this entire controller class. Could also apply it to certain methods. //doesn't work if a user is established in the httpcontext, as it is in Auto
+    //AuthenticationHandler
     public class ReservationController : ApiController
     {
         private AppDataContext db = new AppDataContext();
@@ -21,10 +25,11 @@ namespace ExploreCalifornia.Controllers
         // GET: api/Reservation
         public IQueryable<Reservation> GetReservations()
         {
-            return db.Reservations.Include(i =>i.Tour);
+            return db.Reservations.Include(i =>i.Tour); // makes the entity framework include a linked field
         }
 
         // GET: api/Reservation/5
+        [AllowAnonymous] // this "overrides" (in a non-technical meaning) the authorize tag at the head of the class.
         [ResponseType(typeof(Reservation))]
         public async Task<IHttpActionResult> GetReservation(int id)
         {
@@ -73,7 +78,8 @@ namespace ExploreCalifornia.Controllers
         }
 
         // POST: api/Reservation
-        [ResponseType(typeof(Reservation))]
+        [DbUpdateExceptionFilter]
+        [ResponseType(typeof(Reservation))] 
         public async Task<IHttpActionResult> PostReservation(Reservation reservation)
         {
             if (!ModelState.IsValid)
@@ -82,6 +88,7 @@ namespace ExploreCalifornia.Controllers
             }
 
             db.Reservations.Add(reservation);
+
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = reservation.ReservationId }, reservation);

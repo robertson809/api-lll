@@ -3,11 +3,15 @@ using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Routing;
 using ExploreCalifornia.Config;
+using ExploreCalifornia.ExceptionHandlers;
+using ExploreCalifornia.Filters;
+using ExploreCalifornia.Loggers;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
+using Swashbuckle.Application;
 
 [assembly: OwinStartup(typeof(ExploreCalifornia.Startup))]
 namespace ExploreCalifornia
@@ -24,6 +28,7 @@ namespace ExploreCalifornia
             json.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
 
             ConfigureWebApi(app, config);
+            ConfigureSwashbuckle(config);
         }
 
         
@@ -31,6 +36,15 @@ namespace ExploreCalifornia
         {
             //config.Formatters.XmlFormatter.UseXmlSerializer = true; // tells it to use the XML serializer instead of DataContractSerializer
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
+            config.Filters.Add(new DbUpdateExceptionFilterAttribute());
+            config.Services.Replace(typeof(IExceptionLogger), new UnhandledExceptionLogger()); // interesting that we're passing instances
+            // of the newly implemented class rather than just the class name. I.e., why the "new" keyword just there?
+
+            config.Services.Replace(typeof(IExceptionHandler), new UnhandledExceptionHandler()); // same question as above here. 
+
+            config.MessageHandlers.Add(new AutoAuthenticationHandler()); // runs every time someone accesses the API, might put some kind of
+            //auth token here, like a string value or a token. 
 
             config.MapHttpAttributeRoutes(); // look for attributes on action methods
             // this tells the API calls where to look for the methods. 
@@ -49,6 +63,16 @@ namespace ExploreCalifornia
           
 
             app.UseWebApi(config);
+        }
+
+        public void ConfigureSwashbuckle(HttpConfiguration config)
+        {
+            config.EnableSwagger(ConfigObj =>
+            {
+                
+                ConfigObj.SingleApiVersion("v1", "title of api");
+                ConfigObj.IncludeXmlComments($"{AppDomain.CurrentDomain.BaseDirectory}//bin//ExploreCalifornia.xml");
+            }).EnableSwaggerUi();
         }
     }
 }

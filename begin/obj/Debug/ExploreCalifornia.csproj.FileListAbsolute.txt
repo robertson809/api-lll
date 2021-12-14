@@ -89,3 +89,14 @@ C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin
 C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\roslyn\vbc.rsp
 C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\roslyn\VBCSCompiler.exe
 C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.Helpers.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.Mvc.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.WebPages.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.WebPages.Razor.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.Helpers.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.Mvc.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.WebPages.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.WebPages.Razor.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Swashbuckle.Core.dll
