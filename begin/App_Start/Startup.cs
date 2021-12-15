@@ -8,6 +8,7 @@ using ExploreCalifornia.Filters;
 using ExploreCalifornia.Loggers;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Jwt;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
@@ -29,6 +30,7 @@ namespace ExploreCalifornia
 
             ConfigureWebApi(app, config);
             ConfigureSwashbuckle(config);
+            ConfigureJwt(app);
         }
 
         
@@ -43,7 +45,7 @@ namespace ExploreCalifornia
 
             config.Services.Replace(typeof(IExceptionHandler), new UnhandledExceptionHandler()); // same question as above here. 
 
-            config.MessageHandlers.Add(new AutoAuthenticationHandler()); // runs every time someone accesses the API, might put some kind of
+            config.MessageHandlers.Add(new TokenValidationHandler()); // runs every time someone accesses the API, might put some kind of
             //auth token here, like a string value or a token. 
 
             config.MapHttpAttributeRoutes(); // look for attributes on action methods
@@ -63,6 +65,20 @@ namespace ExploreCalifornia
           
 
             app.UseWebApi(config);
+        }
+
+
+        public void ConfigureJwt(IAppBuilder app)
+        {
+            app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
+            {
+                AuthenticationMode = AuthenticationMode.Active,
+                AllowedAudiences = new[] {GlobalConfig.Audience},
+                IssuerSecurityKeyProviders = new IIssuerSecurityKeyProvider[]
+                {
+                    new SymmetricKeyIssuerSecurityKeyProvider(GlobalConfig.Audience, GlobalConfig.Secret)//oh my god when does it end
+                }
+            }); // why the new keyword here?
         }
 
         public void ConfigureSwashbuckle(HttpConfiguration config)

@@ -100,3 +100,17 @@ C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin
 C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.Web.WebPages.Razor.xml
 C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Swashbuckle.Core.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.Owin.Security.Jwt.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.JsonWebTokens.pdb
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.Logging.pdb
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.Tokens.pdb
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\Microsoft.Owin.Security.Jwt.xml
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.IdentityModel.Tokens.Jwt.pdb
+C:\Users\Michael\Desktop\Ex_Files_WebAPIs_ASP_NET_API\Exercise Files\01_02\begin\bin\System.IdentityModel.Tokens.Jwt.xml

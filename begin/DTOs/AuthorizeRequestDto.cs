@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+// POCO (Plain old CLR (.NET Common Language Runtime) Object)
 namespace ExploreCalifornia.DTOs
 {
     public class AuthorizeRequestDto
